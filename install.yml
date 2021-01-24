@@ -1,6 +1,10 @@
 ---
 - name: Installing packages
   hosts: localhost
+  vars:
+    mc_manifest_url: https://launchermeta.mojang.com/mc/game/version_manifest.json
+
+
   tasks:
   - name: Install Java
     become: yes
