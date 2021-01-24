@@ -1,0 +1,4 @@
+- name: Create Minecraft user
+  user:
+    name: minecraft
+    state: present
