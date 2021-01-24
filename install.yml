@@ -11,4 +11,26 @@
     file:
       path: ./minecraft
       state: directory
-      mode: 0700
+      mode: 0700  
+
+  - name: "Get MC version"
+    uri:
+      url: "{{ mc_manifest_url }}"
+    register: manifest
+
+  - name: "Show Version"
+    debug:
+      msg: "{{ manifest.json.latest.release }}"
+
+  - name: "Set Version"
+    set_fact:
+      version: "{{ manifest.json.latest.release }}"
+
+  - name: "Get Server link"
+    uri:
+      url: "{{ manifest.json.versions.1.url }}"
+    register: serverurl
+
+  - name: "Show Server url"
+    debug:
+      msg: "{{ serverurl.json.downloads.server.url }}"
