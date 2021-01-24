@@ -1,0 +1,14 @@
+---
+- name: Installing packages
+  hosts: localhost
+  tasks:
+  - name: Install Java
+    become: yes
+    apt: 
+      name: openjdk-11-jdk
+
+  - name: Create minecraft directory
+    file:
+      path: ./minecraft
+      state: directory
+      mode: 0700
